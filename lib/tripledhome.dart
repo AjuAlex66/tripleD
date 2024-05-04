@@ -1,6 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:tripled/bloc/mainbloc.dart';
 import 'package:tripled/common/displayname.dart';
+import 'package:tripled/common/profileinfo.dart';
 import 'package:tripled/common/roundedcontainer.dart';
 import 'package:tripled/utils/changerclass.dart';
 import 'package:tripled/utils/helper.dart';
@@ -117,6 +121,108 @@ class TripleDHome extends StatelessWidget {
                 prefix: "Mr.",
                 suffix: "Flutter Developer"),
           ]),
+          //-------------------------------------------------------
+          //task 4
+          RoundedContainer(
+            title: "#4 User Information - Server",
+            children: [
+              BlocBuilder<MainBloc, MainState>(
+                  buildWhen: (previous, current) =>
+                      current is LoadingUserInformation ||
+                      current is ProfileFetched ||
+                      current is PorfileNotFetched ||
+                      current is SomethingWrong,
+                  builder: (context, state) {
+                    if (state is LoadingUserInformation) {
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const CupertinoActivityIndicator(color: Colors.blue),
+                          Helper.allowWidth(15),
+                          const Text(
+                            "Loading...",
+                            style: TextStyle(color: Colors.blue),
+                          ),
+                        ],
+                      );
+                    }
+                    if (state is ProfileFetched) {
+                      return ProfileInfo(
+                        firstName: state.profileModel!.data!.firstName!,
+                        lastName: state.profileModel!.data!.lastName!,
+                        image: state.profileModel!.data!.avatar,
+                        email: state.profileModel!.data!.email,
+                      );
+                    }
+                    if (state is PorfileNotFetched) {
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            Icons.touch_app_outlined,
+                            color: Colors.blue,
+                          ),
+                          Helper.allowWidth(15),
+                          const Text(
+                            "Click here to load user information",
+                            style: TextStyle(color: Colors.blue),
+                          ),
+                        ],
+                      );
+                    }
+
+                    if (state is SomethingWrong) {
+                      return InkWell(
+                        onTap: () => context
+                            .read<MainBloc>()
+                            .add(GetRandomProfile(userId: 1)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.error,
+                              color: Colors.blue,
+                            ),
+                            Helper.allowWidth(15),
+                            const Text(
+                              "Something went wrong",
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+
+                    return InkWell(
+                      onTap: () => context
+                          .read<MainBloc>()
+                          .add(GetRandomProfile(userId: 1)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            Icons.touch_app_outlined,
+                            color: Colors.blue,
+                          ),
+                          Helper.allowWidth(15),
+                          const Text(
+                            "Click here to load user information",
+                            style: TextStyle(color: Colors.blue),
+                          ),
+                        ],
+                      ),
+                    );
+                  })
+            ],
+          ),
           //-------------------------------------------------------
         ],
       ),

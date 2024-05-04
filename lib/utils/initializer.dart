@@ -1,3 +1,5 @@
+import 'package:tripled/model/profilemodel.dart';
+
 class Initializer {
   static String? tripleDropValue = 'View', tripleCountry = 'IN';
   static List<String> tripleDropList = ['View', 'Edit', 'Send', 'Delete'];
@@ -6,4 +8,6 @@ class Initializer {
     {"country": "US", "states": "AL, DE and GA", "selected": false},
     {"country": "CA", "states": "ON, QC and BC", "selected": false},
   ];
+
+   static ProfileModel profileModel = ProfileModel();
 }
