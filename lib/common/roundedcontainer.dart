@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:tripled/utils/helper.dart';
 
@@ -13,14 +12,18 @@ class RoundedContainer extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title!, style: const TextStyle(color: Colors.red)),
-        const Divider(color: Colors.red),
+        Text(title!,
+            style: const TextStyle(
+                color: Colors.green,
+                fontSize: 18,
+                fontWeight: FontWeight.bold)),
+        const Divider(color: Colors.blueGrey),
         Helper.allowHeight(15),
         Container(
           width: Helper.width,
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
-              border: Border.all(color: Colors.green),
+              border: Border.all(color: Colors.black),
               borderRadius: const BorderRadius.all(Radius.circular(8.0))),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

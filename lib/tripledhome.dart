@@ -27,7 +27,7 @@ class TripleDHome extends StatelessWidget {
           // task 1
           Consumer<Changer>(
             builder: (context, value, child) => RoundedContainer(
-              title: "#1 Drop down - no plugin",
+              title: "Simple Dropdown",
               children: [
                 const Text("More Actions"),
                 DropdownButton<String>(
@@ -55,7 +55,7 @@ class TripleDHome extends StatelessWidget {
           //task 2
           Consumer<Changer>(
             builder: (context, value, child) => RoundedContainer(
-              title: "#2 Country and State",
+              title: "Dynamic Select Boxes",
               children: [
                 const Text("Country"),
                 DropdownButton<String>(
@@ -115,7 +115,7 @@ class TripleDHome extends StatelessWidget {
           ),
           //-------------------------------------------------------
           //task 3
-          const RoundedContainer(title: '#3 Name Widget', children: [
+          const RoundedContainer(title: 'My Name Widget', children: [
             DisplayName(
                 firstName: "Aju",
                 secondName: "Alex",
@@ -125,7 +125,7 @@ class TripleDHome extends StatelessWidget {
           //-------------------------------------------------------
           //task 4
           RoundedContainer(
-            title: "#4 User Information - Server",
+            title: "Profile Widget",
             children: [
               BlocBuilder<MainBloc, MainState>(
                   buildWhen: (previous, current) =>
@@ -227,7 +227,7 @@ class TripleDHome extends StatelessWidget {
           //-------------------------------------------------------
           //task 5
           RoundedContainer(
-            title: "#5 All Users Information - Server",
+            title: "List of Users",
             children: [
               InkWell(
                 onTap: () => Helper.push(const AllUsersPage()),
@@ -250,7 +250,6 @@ class TripleDHome extends StatelessWidget {
               )
             ],
           ),
-        
         ],
       ),
     );
