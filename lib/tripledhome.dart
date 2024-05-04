@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:tripled/alluserspage.dart';
 import 'package:tripled/bloc/mainbloc.dart';
 import 'package:tripled/common/displayname.dart';
 import 'package:tripled/common/profileinfo.dart';
@@ -224,6 +225,32 @@ class TripleDHome extends StatelessWidget {
             ],
           ),
           //-------------------------------------------------------
+          //task 5
+          RoundedContainer(
+            title: "#5 All Users Information - Server",
+            children: [
+              InkWell(
+                onTap: () => Helper.push(const AllUsersPage()),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      Icons.touch_app_outlined,
+                      color: Colors.blue,
+                    ),
+                    Helper.allowWidth(15),
+                    const Text(
+                      "Click here to load all users information",
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        
         ],
       ),
     );

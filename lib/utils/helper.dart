@@ -13,4 +13,9 @@ class Helper {
   static showLog(String? message) => log(message!);
   static shrink() => const SizedBox.shrink();
   static void showToast(String? msg) => Fluttertoast.showToast(msg: msg!);
+  static push(dynamic route) => Navigator.push(
+      key.currentContext!,
+      MaterialPageRoute(
+        builder: (context) => route,
+      ));
 }
