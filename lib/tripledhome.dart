@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tripled/common/displayname.dart';
 import 'package:tripled/common/roundedcontainer.dart';
 import 'package:tripled/utils/changerclass.dart';
 import 'package:tripled/utils/helper.dart';
@@ -107,6 +108,15 @@ class TripleDHome extends StatelessWidget {
               ],
             ),
           ),
+          //-------------------------------------------------------
+          //task 3
+          const RoundedContainer(title: '#3 Name Widget', children: [
+            DisplayName(
+                firstName: "Aju",
+                secondName: "Alex",
+                prefix: "Mr.",
+                suffix: "Flutter Developer"),
+          ]),
           //-------------------------------------------------------
         ],
       ),
